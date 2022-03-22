@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        h3 {
+            font-weight: normal;
+            white-space: pre-line
+        }
+
+        #div1 {
+            width: 400px;
+            height: 50px;
+
+            margin-right: auto;
+            margin-left: auto;
+
+            display: flex;
+        }
+
+        #div1 button {
+            flex-grow: 1;
+        }
+
+        #speedDiv {
+            width: 300px;
+            margin-left: auto;
+            margin-right: auto;
+
+            border: 2px;
+            border-color: grey;
+            border-style: solid;
+        }
+
+        #speedDiv span {
+            margin: 0px;
+        }
+
+        #speedDiv p {
+            margin: 5px;
+        }
+
+        #canvas {
+            /* width: 500px;
+            height: 500px; */
+
+            margin-right: auto;
+            margin-left: auto;
+            display: flex;
+
+            border-style: ridge;
+        }
+
+        #hidden {
+            visibility: hidden;
+            background-color: rgba(0, 0, 0, 0.6);
+
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+
+            padding-top: 300px;
+        }
+
+        #hidden * {
+            display: block;
+            margin: 10px auto 10px auto;
+            text-align: center;
+        }
+
+        #warning {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <button id="create">Create a maze</button>
+        <button id="solve">Solve a maze</button>
+    </div>
+    <canvas id="canvas" width=500 height=500></canvas>
+    <div id="speedDiv">
+        <span>slow</span>
+        <input type="range" min="0" max="100" value="70" class="slider" id="speedSlider">
+        <span>fast</span>
+        <p id="speedMessage">100.00 ms timestep</p>
+    </div>
+    <h3 id="message-box">Click Create or Solve to start</h3>
+
+    <div id="hidden">
+        <h2>Enter maze size (10 - 100)</h2>
+        <input id="size-input"type="text"></input>
+        <p id="warning"></p>
+    </div>
+</body>
+<script src="maze.js"></script>
+</html>
