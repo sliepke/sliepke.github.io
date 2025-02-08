@@ -1,0 +1,107 @@
+<html lang="en-US">
+
+<head>
+	<link rel="stylesheet" href="styles/index.css" />
+	<script defer src="scripts/tabpanels.js"></script>
+	<script defer src="scripts/load-friends.js"></script>
+	<template id="friendlist-item">
+		<!-- each friend entry is an li of the friends list-->
+		<li>
+			<label>
+				<button>
+					<img src="images/down-icon.svg" />
+					<!-- friend's profile picture -->
+					<img />
+					<!-- friend's username goes here -->
+				</button>
+				<!-- Show options for (username)" goes here -->
+			</label>
+		</li>
+	</template>
+</head>
+
+<h1>Classic Game Lobby</h1>
+
+<div id="user-info">
+	<img src="images/door-icon.png"></img>
+	<a href="https://example.com">Login</a>
+</div>
+
+
+
+<main>
+
+
+<div id="sidebar">
+	<div role="tablist" label="Menu" aria-orientation="vertical">
+		<button role="tab" aria-selected="true" aria-controls="games" tabindex="0" id="playtab">
+			<img src="images/play-icon.png" alt="Play" title="Play" />
+		</button>
+		<button role="tab" aria-selected="false" aria-controls="friends" tabindex="-1" id="friendstab">
+			<img src="images/people-icon.png" alt="Friends" title="Friends" />
+		</button>
+	</div>
+</div>
+
+<section role="tabpanel" aria-labelledby="playtab" class="selected" id="games">
+	<div id="tic-tac-toe">
+		<div>
+			<h2>Tic Tac Toe</h2>
+			<img src="images/tic-tac-toe-preview.png" alt="image of tic tac toe" />
+		</div>
+		<p>Play against:</p>
+		<button><span>Play tic tac toe against a</span> Random Opponent</button>
+		<button><span>Play tic tac toe against a</span> Friend</button>
+		<button><span>Play tic tac toe against a</span> Bot</button>
+	</div>
+	<div id="checkers">
+		<div>
+			<h2>Checkers</h2>
+			<img src="images/checkers-preview.png" alt="image of tic tac toe" />
+		</div>
+		<p>Play against:</p>
+		<button><span>Play checkers against a</span> Random Opponent</button>
+		<button><span>Play checkers against a</span> Friend</button>
+		<button><span>Play checkers against a</span> Bot</button>
+	</div>
+	<div id="chess">
+		<div>
+			<h2>Chess</h2>
+			<img src="images/chess-preview.png" alt="image of tic tac toe" />
+		</div>
+		<p>Play against:</p>
+		<button><span>Play chess against a</span> Random Opponent</button>
+		<button><span>Play chess against a</span> Friend</button>
+		<button><span>Play chess against a</span> Bot</button>
+	</div>
+</section>
+
+
+<section role="tabpanel" aria-labelledby="friendsbutton" id="friends">
+	<div>
+		<button id="add-friend">
+			<img src="images/add.svg" alt="Add" title="Add friend" />
+		</button>
+		<button id="show-friends" class="selected" refersto="#friends-list"><span>Show</span> Friends</button>
+		<button id="show-friend-requests" refersto="#requests-list"><span>Show friend</span> Requests</button>
+	</div>
+	
+	<div id="friends-list" class="selected">
+		<input type="search" placeholder="Search friends">
+		<select>
+			<option selected>last online</option>
+			<option>recently added</option>
+		</select>
+	</div>
+	
+	<div id="requests-list">
+		<input type="search" placeholder="Search friend requests">
+		<select>
+			<option selected>last online</option>
+			<option>recently added</option>
+		</select>
+	</div>
+</section>
+
+
+</main>

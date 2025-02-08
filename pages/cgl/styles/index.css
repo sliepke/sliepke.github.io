@@ -1,0 +1,273 @@
+body {
+	background-color: black;
+	color: #F0F0F0;
+	font-family: sans-serif;
+}
+
+p {
+	margin: 0.5em;
+}
+
+h1, h2 {
+	top: 0px;
+	text-align: center;
+}
+
+
+
+/* styling for everything other than the tabpanels */
+
+
+
+#user-info {
+	display: flex;
+	margin: 1em 0;
+	> img {
+		height: 2em;
+	}
+	> a {
+		font-size: 1.5em;
+		color: hsl(240, 100%, 85%);
+	}
+}
+
+
+main {
+	display: flex;
+}
+
+#sidebar {
+	flex: 0 0 calc(2.5em + 2%);
+	align-self: start;
+	min-height: 50vh;
+	padding: 30px 0;
+	
+	background-color: rgb(47, 79, 79);
+	border: 2px solid ivory;
+	border-left: none;
+	border-radius: 0 4px 4px 0;
+	position: sticky;
+	top: 5px;
+	
+	button {
+		/* might be border-box by default for some reason */
+		box-sizing: content-box;
+		
+		display: block;
+		width: 50%;
+		margin: 0 0 0 auto;
+		padding: 4px;
+		
+		background-color: rgba(0, 0, 0, 0.3);
+		border: solid silver;
+		border-width: 0 0 2px 2px;
+		border-radius: 50% 0 0 50% / 6px 0 0 6px;
+		
+		&:first-child {
+			border-top-width: 2px;
+		}
+		
+		&[aria-selected="true"] {
+			position: relative;
+			left: 2px;
+			
+			background-color: none;
+			border-right-width: 2px;
+			border-left-width: 2px;
+			border-image: url("../images/selected-tab-border.svg");
+			border-image-slice: 25% 10% 25% 5% fill;
+			border-image-outset: 6px 2px 4px 0;
+			border-image-width: 10px 4px 10px 2px;
+			
+			/* border-image-outset values assume a top border width of 0 */
+			&:first-child {
+				border-top-width: 0;
+				margin-top: 2px;
+			}
+			
+			/* touching borders of adjacent buttons should be 0 */
+			:has(+ &) {
+				border-bottom-width: 0;
+				padding-bottom: 6px;
+			}
+		}
+		
+		&.notification {
+			animation: notification 2s infinite;
+		}
+		
+		> img {
+			width: 100%;
+		}
+	}
+}
+
+
+
+/* styling for the tabpanels (which are sections) */
+
+
+
+[role="tabpanel"] {
+	flex-grow: 1;
+	&:not(.selected):not(#fakeIdForSpecificity) {
+		display: none;
+	}
+}
+
+#games {
+	/* grid container stuff */
+	display: grid;
+	padding: 0 1em;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 400px));
+	justify-content: space-around;
+	grid-template-rows: auto;
+	grid-auto-rows: auto;
+	
+	
+	/* each div inside is a single game */
+	> div {
+		margin: calc(0.28em + 3.6%);
+		align-self: start;
+		transition: margin 0.4s;
+		border: 4px solid silver;
+		border-radius: 10px;
+		&:hover {
+			margin: calc(0.21em + 2.7%);
+		}
+		/* area containing game image and header */
+		> div {
+			/* TODO: add image / video to background of each game */
+			> img {
+				/* 1:1 image aspect ratio is needed to keep grid row
+				   sizes the same when games are hovered over */
+				width: 100%;
+				height: auto;
+				aspect-ratio: 1 / 1;
+				object-fit: cover;
+			}
+		}
+		> button {
+			text-align: left;
+			box-sizing: border-box;
+			width: 100%;
+			display: block;
+			padding: 0.5em 0.5em 0.5em 1.5em;
+			border: 2px solid dimgray;
+			
+			/* span text only for accessibility */
+			span {
+				display: block;
+				width: 0;
+				height: 0;
+				overflow: hidden;
+			}
+			
+			&:nth-last-child(3) {
+				background-color: lightsalmon;
+			}
+			&:nth-last-child(2) {
+				background-color: palevioletred;
+			}
+			&:nth-last-child(1) {
+				background-color: lightsteelblue;
+			}
+			&:hover {
+				background-image: linear-gradient(
+						rgba(0, 0, 0, 0.15) 0%,
+						rgba(0, 0, 0, 0.15) 100%),
+					url("../images/triangle.svg");
+				background-repeat: no-repeat, no-repeat;
+			}
+		}
+	}
+}
+
+#friends {
+	padding: 0 clamp(20px, 15vw - 30px, 50px);
+	
+	/* flex container for the 3 buttons at the top */
+	> div:first-of-type {
+		display: flex;
+		margin-bottom: 1.5lh;
+	}
+	
+	/* green add friend button */
+	#add-friend {
+		box-sizing: content-box;
+		/* prevent child image from being rendered past its border radius */
+		overflow: hidden;
+		
+		font-size: min(calc(0.8em + 1vw), 1.5em);
+		width: 1.4lh;
+		padding: 0;
+		border: 3px outset lightslategray;
+		border-radius: 7px;
+		margin-right: clamp(20px, 15vw - 30px, 40px);
+		aspect-ratio: 1 / 1;
+		&:active {
+			border-style: solid;
+			mask-image: radial-gradient(lightgray 0%, lightgray 100%);
+			mask-mode: luminance;
+		}
+	}
+	
+	/* show friend + show friend requests buttons */
+	:is(#show-friends, #show-friend-requests) {
+		/* get rid of possible user agent styles we dont want */
+		border: none;
+		background: none;
+		color: #F0F0F0;
+		box-sizing: content-box;
+		
+		font-size: min(calc(0.8em + 1vw), 1.5em);
+		padding: 0.1lh clamp(12px, 8vw - 20px, 40px) 0.2lh;
+		border-bottom: 0.1lh solid rgba(0, 255, 0, 0.6);
+		&.selected {
+			border-bottom-width: 0.2lh;
+			padding-bottom: 0.1lh;
+			background-image: linear-gradient(to top,
+				rgba(0, 255, 0, 0.6) 0%, rgba(255, 255, 255, 0) 25%);
+		}
+		span {
+			font-size: 0;
+		}
+	}
+	
+	/* hide friends list / request list if not selected */
+	:is(#friends-list, #requests-list):not(.selected) {
+		display: none;
+	}
+	
+	/* search bar and select menu (for friends and requests lists) */
+	input, select {
+		display: block;
+		clear: both;
+		margin: 0.5em;
+	}
+	
+	
+}
+
+
+
+/* blinking animation for notifications on a sidebar button */
+@keyframes notification {
+	0% {
+		border-color: silver;
+	}
+	20% {
+		border-color: rgb(200, 100, 100);
+		background-color: rgba(255, 0, 0, 0.2);
+	}
+	40% {
+		border-color: silver;
+	}
+}
+
+/* small device --> smaller min column size for games container */
+@media (width <= 350px) {
+	#games {
+		grid-template-columns: repeat(auto-fit, minmax(220px, 400px));
+	}
+}

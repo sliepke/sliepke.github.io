@@ -1,25 +1,90 @@
 <!doctype html>
-<html>
+<html lang="en-us">
 <head>
     <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
-    <h1 class="lefted">Welcome to my <b>shitty website</b></h1>
-    <div class="outer-div">
-        <div class="inner-div">
-            <h1><a href="pages/js-maze-nomodule/index.html">Maze game</a></h1>
-            <img src="images/maze-screenshot.png">
-            <p>
-                In this game, you can choose to create a maze for the computer to solve, or solve a maze made by the computer.
-            </p>
-        </div>
-        <div class="inner-div">
-            <h1>Recipes</h1>
-            <ul>
+	<nav id="pagewide-nav">
+		<a href="#about-me">About me</a>
+		<a href="#projects">Projects</a>
+		<a href="#writing">Writing</a>
+		<a href="#recipes">Recipes</a>
+	</nav>
+	
+	<main>
+	
+	<section>
+		<h1 id="about-me">About me</h1>
+		<div>
+			<p>Hi, my name is Sam Liepke and I'm from Oswego, NY. I'm currently expecting to finish my BS in Computational Mathematics in the Spring of 2025 at RIT.</p>
+			<p>I enjoy going on walks, listening to music, and trying different plant based foods.</p>
+		</div>
+	</section>
+	
+	<section>
+		<h1 id="projects">Projects</h1>
+		<div>
+			<a href="pages/js-maze-nomodule/index.html">
+				<section class="project">
+					<hgroup>
+						<h2>Maze Game</h2>
+						<p><img class="icon" src="images/checkmark.svg" alt="checkmark" />Complete</p>
+						<p>Uses: HTML, CSS, JS</p>
+					</hgroup>
+					<hr />
+					<p><img src="images/maze-screenshot.png" alt="A maze from a green dot to a red dot with black rectangle walls"></img>In this simple single-player game, you can either create a maze and watch the computer solve it using breadth first search, or you can let the computer create a maze for you to solve.</p>
+				</section>
+			</a>
+			<a href="pages/cgl/index.html">
+				<section class="project">
+					<hgroup>
+						<h2>Classic Game Lobby</h2>
+						<p><img class="icon" src="images/clock.svg" alt="" />In progress</p>
+						<p>Uses: HTML, CSS, JS, node.js</p>
+					</hgroup>
+					<hr />
+					<p><img src="images/cgl-screenshot.png" alt="screenshot of classic game lobby webpage, containing images of tic tac toe, checkers, and chess"></img>An accessible web app allowing you to play classic games such as tic-tac-toe, checkers, chess, and hangman with anyone you'd like to over the web.</p>
+				</section>
+			</a>
+		</div>
+	</section>
+	
+	<!-- todo: links to writings -->
+	
+	<section>
+		<h1 id="writing">Writing</h1>
+		<div>
+			<a href="public-policy-proposal.pdf">
+				<section class="writing">
+					<hgroup>
+						<h2>Public Policy Proposal</h2>
+						<p>(PDF, 120KB)</p>
+					</hgroup>
+					<p>Group project for Communication (Comm 253) at RIT, which aimed to address the impact of, and local policy solutions to, car dependency in Henrietta. Summarizes various research regarding effects car dependency on human safety and health, child development, environmental pollution, and local economies.</p>
+				</section>
+			</a>
+			<a href="mathematical-modeling-paper.pdf">
+				<section class="writing">
+					<hgroup>
+						<h2>Time flies: Comparing Completion Times of 3 Plane Disembarking Strategies</h2>
+						<p>(PDF, 399KB)</p>
+					</hgroup>
+					<p>What is the fastest way to deboard the passengers of an airplane? Do you tell everyone to deboard all at once? Or maybe call people off one row at a time? This independent mathematical modeling project aims to find the answer using a simulation written in Python, and investigates how the passengers' number of carry-ons and likelihood of noncompliance to your strategy affects the different strategies' performances.</p>
+				</section>
+			</a>
+		</div>
+	</section>
+	
+	<section>
+		<h1 id="recipes">Recipes</h2>
+		<div>
+			<ul>
 				<li><a href="recipes/tofu-spring-rolls.html">Tofu spring rolls</a></li>
 				<li><a href="recipes/peanut-sauce.html">Peanut sauce</a></li>
 			</ul>
-        </div>
-    </div>
+		</div>
+	</section>
+	
+	</main>
 </body>
 </html>
